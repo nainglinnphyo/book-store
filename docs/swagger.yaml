@@ -11,5 +11,14 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Fiber Example API
   version: "1.0"
-paths: {}
+paths:
+  /api/book:
+    get:
+      consumes:
+      - application/json
+      description: get all book
+      produces:
+      - application/json
+      responses: {}
+      summary: Show a account
 swagger: "2.0"

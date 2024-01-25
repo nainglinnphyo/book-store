@@ -6,8 +6,5 @@ import (
 )
 
 func MainRouteGroup(router fiber.Router) {
-	// @Param request body main.MyHandler.request true "query params"
-	// @Success 200 {object} main.MyHandler.response
-	// @Router /test [post]
 	router.Get("book", controller.GetAllBook)
 }
