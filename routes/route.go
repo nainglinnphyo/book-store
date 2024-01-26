@@ -10,4 +10,5 @@ func MainRouteGroup(router fiber.Router) {
 	// @Success 200 {object} main.MyHandler.response
 	// @Router /test [post]
 	router.Get("book", controller.GetAllBook)
+	router.Post("book", controller.Create)
 }

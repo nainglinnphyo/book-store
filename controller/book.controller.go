@@ -15,3 +15,18 @@ func GetAllBook(c *fiber.Ctx) error {
 	}
 	return c.Status(200).JSON(fiber.Map{"status": "success", "message": "Books Found", "data": books})
 }
+
+func Create(c *fiber.Ctx) error {
+	db := database.DB.Db
+	book := new(model.Book)
+	err := c.BodyParser(book)
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Something's wrong with your input", "data": err})
+	}
+	err = db.Create(&book).Error
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Could not create user", "data": err})
+	}
+	// Return the created book
+	return c.Status(201).JSON(fiber.Map{"status": "success", "message": "User has created", "data": book})
+}
