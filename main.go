@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bookapi.com/config"
 	"bookapi.com/database"
 
 	_ "bookapi.com/docs"
@@ -22,6 +23,7 @@ import (
 // @BasePath /
 func main() {
 	database.Connect()
+	p := config.Config("APP_PORT")
 	app := fiber.New()
 
 	app.Use(cors.New())
@@ -29,10 +31,9 @@ func main() {
 	app.Get("/swagger/*", swagger.HandlerDefault)
 	api := app.Group("api")
 	routes.MainRouteGroup(api)
-
 	// app.Get("/", func(c *fiber.Ctx) error {
 	// 	return c.SendString("Hello, World!")
 	// })
 
-	app.Listen(":4000")
+	app.Listen(p)
 }

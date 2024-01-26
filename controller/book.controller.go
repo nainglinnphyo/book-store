@@ -6,6 +6,12 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+// ShowAccount godoc
+// @Summary Show a account
+// @Description get all book
+// @Accept  json
+// @Produce  json
+// @Router /api/book [get]
 func GetAllBook(c *fiber.Ctx) error {
 	db := database.DB.Db
 	var books []model.Book
